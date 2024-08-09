@@ -2,3 +2,5 @@
 .DS_Store
 /img
 trained_model
+img/.DS_Store
+img/0/.DS_Store

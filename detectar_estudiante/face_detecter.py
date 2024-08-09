@@ -6,7 +6,7 @@ face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface.xml')
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
 # Cargar el modelo previamente entrenado
-recognizer.read('trained_model.yml')
+recognizer.read('/Users/davidlealolivares/Documents/repos/facial_recognition_test/detectar_estudiante/trained_model.yml')
 
 # Diccionario para nombres de personas
 names = {0: "David Leal"}  # Agrega más nombres según tu entrenamiento

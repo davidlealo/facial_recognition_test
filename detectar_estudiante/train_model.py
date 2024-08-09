@@ -9,19 +9,26 @@ face_cascade = cv2.CascadeClassifier('lbpcascade_frontalface.xml')
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 
 # Carpeta con imágenes de entrenamiento
-data_folder = 'img'
-
-faces = []
+data_folder = '/Users/davidlealolivares/Documents/repos/facial_recognition_test/detectar_estudiante/img'
+images = []
 labels = []
 
-for label in os.listdir(data_folder):
-    for image_file in os.listdir(os.path.join(data_folder, label)):
-        img_path = os.path.join(data_folder, label, image_file)
-        img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
-        faces_detected = face_cascade.detectMultiScale(img)
-        for (x, y, w, h) in faces_detected:
-            faces.append(img[y:y+h, x:x+w])
-            labels.append(int(label))
+for label_folder in os.listdir(data_folder):
+    label_path = os.path.join(data_folder, label_folder)
+    
+    # Ignorar archivos como .DS_Store
+    if not os.path.isdir(label_path):
+        continue
+    
+    for image_file in os.listdir(label_path):
+        image_path = os.path.join(label_path, image_file)
+        
+        # Asegurarse de que sea un archivo de imagen válido
+        if image_file.endswith('.jpg') or image_file.endswith('.png'):
+            image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+            images.append(image)
+            labels.append(int(label_folder))  # Suponiendo que los nombres de las carpetas son etiquetas numéricas
 
-recognizer.train(faces, np.array(labels))
-recognizer.save('trained_model.yml')
+recognizer = cv2.face.LBPHFaceRecognizer_create()
+recognizer.train(images, np.array(labels))
+recognizer.save('/Users/davidlealolivares/Documents/repos/facial_recognition_test/detectar_estudiante/trained_model.yml')
