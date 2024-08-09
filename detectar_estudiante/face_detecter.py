@@ -43,8 +43,21 @@ while True:
             name = names[id_]
         else:
             name = "Desconocido"
-        
-        cv2.putText(frame, name, (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 0), 2)
+
+        # Obtener el tamaño del texto
+        (text_width, text_height), baseline = cv2.getTextSize(name, cv2.FONT_HERSHEY_SIMPLEX, 0.8, 2)
+
+        # Coordenadas del rectángulo de fondo
+        rect_x1, rect_y1 = x, y - text_height - 10
+        rect_x2, rect_y2 = x + text_width, y
+
+        # Dibujar el rectángulo de fondo
+        cv2.rectangle(frame, (rect_x1, rect_y1), (rect_x2, rect_y2), (0, 0, 0), cv2.FILLED)  # Fondo negro
+
+        # Dibujar el texto sobre el rectángulo
+        cv2.putText(frame, name, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 255, 255), 2)
+
+        # Dibujar el rectángulo alrededor del rostro
         cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
     # Mostrar la imagen con reconocimiento facial
