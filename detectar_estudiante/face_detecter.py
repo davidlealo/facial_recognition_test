@@ -9,7 +9,7 @@ recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('trained_model.yml')
 
 # Diccionario para nombres de personas
-names = {0: "Persona 1", 1: "Persona 2"}  # Agrega más nombres según tu entrenamiento
+names = {0: "David Leal"}  # Agrega más nombres según tu entrenamiento
 
 # Captura de video
 cap = cv2.VideoCapture(0)
