@@ -9,7 +9,7 @@ recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('/Users/davidlealolivares/Documents/repos/facial_recognition_test/detectar_estudiante/trained_model.yml')
 
 # Diccionario para nombres de personas
-names = {0: "Jackie Chan", 1: "Pedro Pascal", 2: "David Leal", 3: "Ana María"}  # Agrega más nombres según tu entrenamiento
+names = {0: "Jackie Chan", 1: "Pedro Pascal", 2: "David Leal", 3: "Ana Maria"}  # Agrega más nombres según tu entrenamiento
 
 # Captura de video
 cap = cv2.VideoCapture(0)
