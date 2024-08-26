@@ -2,3 +2,4 @@
 .DS_Store
 trained_model
 detectar_estudiante/trained_model.yml
+detections.csv
